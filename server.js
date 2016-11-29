@@ -16,9 +16,6 @@ http.createServer(function (req, res) {
     fs.readFile(filename, "binary", function (err, file) {
         if (err) {
 
-            console.log('we have an error:');
-            console.log(err);
-
             res.writeHead(500, {
                 "Content-Type" : "text/plain"
             });
@@ -26,9 +23,6 @@ http.createServer(function (req, res) {
             res.end();
             return;
         }
-
-        console.log('request: ');
-        console.log(req.url);
 
         res.writeHead(200);
         res.write(file, "binary");
