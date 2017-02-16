@@ -12,7 +12,9 @@ var game = (function () {
         // preload
         preload : function () {
 
-            game.load.image('logo', 'phaser.png');
+            game.load.image('logo', 'assets/phaser.png');
+            game.load.image('background', 'assets/phaser.png');
+            game.load.spritesheet('button', 'assets/button.png',160,45);
 
         },
 
@@ -28,11 +30,11 @@ var game = (function () {
             logo.x = game.width / 2 - logo.width / 2;
             logo.y = game.height / 2 - logo.height / 2;
 
-            game.add.button(0, 0, 'a button', function () {
+            game.add.button(game.world.centerX - 80, game.world.centerY + 30, 'button', function () {
 
-                background.visible = !background.visible;
+                //background.visible = !background.visible;
 
-            }, this, 2, 0, 1)
+            }, this, 0, 0, 1)
 
         },
 
