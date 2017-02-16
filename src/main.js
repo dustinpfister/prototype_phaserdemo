@@ -1,4 +1,4 @@
-var game = (function () {
+var app = (function () {
 
     var background,
     logo;
@@ -12,17 +12,21 @@ var game = (function () {
         // preload
         preload : function () {
 
-            game.load.image('logo', 'assets/phaser.png');
-            game.load.image('background', 'assets/moon.jpg');
-            game.load.spritesheet('button', 'assets/button.png', 160, 45);
+            app.load.image('logo', 'assets/phaser.png');
+            app.load.image('background', 'assets/moon.jpg');
+            app.load.spritesheet('button', 'assets/button.png', 160, 45);
 
         },
 
         // create
         create : function () {
 
-            game.state.add('title', Title);
-            game.state.start('title');
+            // add states
+            app.state.add('title', Title);
+            app.state.add('game', Game);
+
+            // start title
+            app.state.start('title');
 
         },
 
@@ -32,7 +36,7 @@ var game = (function () {
     });
 
     /*
-    var pointer = new Phaser.Pointer(game, 0, 'TOUCH')
+    var pointer = new Phaser.Pointer(app, 0, 'TOUCH')
      */
 
 }
