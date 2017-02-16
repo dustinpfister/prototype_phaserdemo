@@ -1,54 +1,51 @@
-window.onload = function () {
 
-    //  Note that this html file is set to pull down Phaser 2.5.0 from the JS Delivr CDN.
-    //  Although it will work fine with this tutorial, it's almost certainly not the most current version.
-    //  Be sure to replace it with an updated version before you start experimenting with adding your own code.
+var game = (function () {
 
-    var game = new Phaser.Game(
-            640, 480,
-            Phaser.AUTO,
-            'gamearea', {
-            preload : preload,
-            create : create,
-            update : update
-        });
+    var background,
+    logo;
 
-    var logo,
-    grow = true;
+    return new Phaser.Game(
+        640, 480,
+        Phaser.AUTO,
+        'gamearea', {
 
-    function preload() {
+        // preload
+        preload : function () {
 
-        game.load.image('logo', 'phaser.png');
+            game.load.image('logo', 'phaser.png');
 
-    }
+        },
 
-    function create() {
+        // create
+        create : function () {
 
-        logo = game.add.sprite(game.world.centerX, game.world.centerY, 'logo');
-        logo.angle = 90;
-        logo.width = 60;
-        logo.height = 60;
-        //logo.anchor.setTo(0.5, 0.5);
+            background = game.add.tileSprite(0, 0, 800, 600, 'background');
 
-    }
+            logo = game.add.sprite(game.world.centerX, game.world.centerY, 'logo');
+            logo.angle = 0;
+            logo.width = game.width / 2;
+            logo.height = game.height / 2;
+            logo.x = game.width / 2 - logo.width / 2;
+            logo.y = game.height / 2 - logo.height / 2;
 
-    function update() {
+            game.add.button(0, 0, 'a button', function () {
 
-        console.log('test');
+                background.visible = !background.visible;
 
-        if (logo.width >= 300) {
-            grow = false;
-        }
-        if (logo.width <= 50) {
-            grow = true;
-        }
+            }, this, 2, 0, 1)
 
-        var delta = grow ? 5 : -5;
+        },
 
-        logo.width += delta;
-        logo.height += delta;
-        logo.angle += delta;
+        // update (ticks)
+        update : function () {}
 
-    }
+    });
 
-};
+    var pointer = new Phaser.Pointer(game, 0, 'TOUCH')
+
+        console.log(pointer)
+
+}
+    ());
+
+//console.log(game);
