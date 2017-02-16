@@ -1,0 +1,16 @@
+{
+  "name": "prototype_phaserdemo",
+  "homepage": "https://github.com/dustinpfister/prototype_phaserdemo",
+  "authors": [
+    "dustinpfister <dustin.pfister@gmail.com>"
+  ],
+  "description": "My first phaser project",
+  "main": "index.html",
+  "keywords": [
+    "demo"
+  ],
+  "license": "GPL-3.0",
+  "dependencies": {
+    "phaser": "^2.6.2"
+  }
+}
